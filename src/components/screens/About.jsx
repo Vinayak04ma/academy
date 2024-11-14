@@ -1,7 +1,9 @@
 import React from 'react';
+import Footer from "../Footer";
 
 const About = () => {
   return (
+    <div>
     <section className="py-16 px-6 bg-gray-50" id="about">
       <div className="max-w-7xl mx-auto text-center">
         {/* Main Heading */}
@@ -88,7 +90,10 @@ const About = () => {
           </div>
         </div>
       </div>
+    
     </section>
+      <Footer/>
+      </div>
   );
 };
 

@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import mentorsData from '../../data/mentors.json'; // Assuming you place the json file in the src folder
+import mentorsData from '../../data/mentors.json'; 
+import Footer from "../Footer";
 
 const Mentors = () => {
   const [mentors, setMentors] = useState([]);
 
   useEffect(() => {
-    setMentors(mentorsData); // Set data from JSON file
+    setMentors(mentorsData); 
   }, []);
 
   return (
+    <div>
     <section className="py-16 px-6 bg-gray-50" id="mentors">
       <div className="max-w-7xl mx-auto text-center">
         {/* Main Heading */}
@@ -46,7 +48,10 @@ const Mentors = () => {
           ))}
         </div>
       </div>
+     
     </section>
+    <Footer/>
+    </div>
   );
 };
 

@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import {BrowserRouter as Router ,Route,Routes,Link} from 'react-router-dom';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 const Header=()=>{
   const [nav, setNav] = useState(false);
+  const { loginWithRedirect,isAuthenticated } = useAuth0();
+  const { logout } = useAuth0();
+
   const handleNav = () => {
     setNav(!nav);
   };
+  
 
   const links=[
     {
@@ -26,12 +31,7 @@ const Header=()=>{
       name:"Our Mentors",
       link:"/Mentors"
     },
-    {
-      id:"6",
-      name:"Registration Form",
-      link:"/RegistrationForm"
-    },
-    
+   
   
   ]
   return(
@@ -53,6 +53,26 @@ const Header=()=>{
             <Link to={link.link}>{link.name}</Link>
             </li>
           ))}
+          
+          {
+  isAuthenticated ? (
+    <li className="cursor-pointer hover:bg-[rgba(0,0,0,0.1)] rounded p-1 flex items-center gap-2">
+      <Link to="/Profile">Profile</Link>
+    </li>
+  ) : (
+    <div></div>
+  )
+}
+
+ 
+           <li
+              
+              className="cursor-pointer hover:bg-[rgba(0,0,0,0.1)] rounded p-1 flex items-center gap-2"
+            >
+              {
+                isAuthenticated? <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Log out</button>: <button onClick={() => loginWithRedirect()}>Log In</button>
+              }
+            </li>
           </nav>
           {/* Mobile Navigation Icon */}
       <div onClick={handleNav} className='block md:hidden absolute right-[35px]'>

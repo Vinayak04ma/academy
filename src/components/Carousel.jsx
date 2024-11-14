@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
 
 const Carousel = ({ data }) => {
-    console.log(typeof data);
+   
     const [slide, setSlide] = useState(0);
 
     const nextSlide = () => {
